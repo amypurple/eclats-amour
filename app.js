@@ -19,8 +19,6 @@ function updateReceiverName() {
 var formWrapper = document.getElementById("form-wrapper");
 var previewWrapper = document.getElementById("preview-wrapper");
 
-
-
 // JavaScript for the fortune cookie web app
 window.fbAsyncInit = function () {
 	FB.init({
@@ -34,15 +32,17 @@ window.fbAsyncInit = function () {
 
 	// Check login status
 	FB.getLoginStatus(function (response) {
+		console.log("getLoginStatus callback called");
 		if (response.status === "connected") {
 			// User is logged in and has granted permissions
 			document.getElementById("share-button").style.display = "block";
-            getUserName();
-        } else {
-            // User is not logged in or has not granted permissions
-            document.getElementById('share-button').style.display = 'none';
-        }
-    });
+			getUserName();
+		} else {
+			console.log(`${response.status}`);
+			// User is not logged in or has not granted permissions
+			document.getElementById("share-button").style.display = "none";
+		}
+	});
 };
 
 // Get the name of the logged-in Facebook user
@@ -153,7 +153,6 @@ function getRandomPositiveMessage(name) {
 	return texte;
 }
 
-
 // Add event listener to the preview button
 document.getElementById("preview-button").addEventListener("click", function () {
 	// Get the receiver's name from the input field
@@ -165,4 +164,3 @@ document.getElementById("preview-button").addEventListener("click", function () 
 	formWrapper.style.display = "none";
 	previewWrapper.style.display = "block";
 });
-
