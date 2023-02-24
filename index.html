@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Éclats d'Amour</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">    
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
-  <body>
-
-    <div id="wrapper">
-      <h1>Éclats d'Amour<span>par Amy Bienvenu</span></h1>    
-      <div id="form-wrapper">
-        <label for="receiverName">À qui envoyer l'éclat d'amour ?</label>
-        <div id="input-button-wrapper">
-            <input type="text" id="receiverName" />
-            <button id="preview-button">Aperçu</button>
-        </div>
-      <fb:login-button 
-      scope="public_profile,email"
-      onlogin="checkLoginState();">
-      </fb:login-button>        
-      </div>
-      <div id="preview-wrapper">
-        <img id="preview-image" src="paper.png" alt="Aperçu" />
-        <button id="share-button">Partager</button>
-      </div>
-    </div>    
-    <script>
-      (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <script src="app.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Éclats d'Amour</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+		<link rel="stylesheet" type="text/css" href="style.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<h1>Éclats d'Amour<span>par Amy Bienvenu</span></h1>
+			<div id="form-wrapper">
+				<label for="receiverName">À qui envoyer l'éclat d'amour ?</label>
+				<div id="input-button-wrapper">
+					<input type="text" id="receiverName" />
+					<button id="preview-button">Aperçu</button>
+				</div>
+				<fb:login-button scope="public_profile" onlogin="checkLoginState();"> </fb:login-button>
+			</div>
+			<div id="preview-wrapper">
+				<img id="preview-image" src="paper.png" alt="Aperçu" />
+				<button id="share-button">Partager</button>
+			</div>
+		</div>
+		<script>
+			(function (d, s, id) {
+				var js,
+					fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) {
+					return;
+				}
+				js = d.createElement(s);
+				js.id = id;
+				js.src = "https://connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			})(document, "script", "facebook-jssdk");
+		</script>
+		<script src="app.js"></script>
+	</body>
 </html>
