@@ -72,9 +72,12 @@ function checkLoginState() {
 
 // Get the name of the logged-in Facebook user
 function getUserName() {
+	console.log("getUserName");
 	FB.api(
 		"/me",
 		function (response) {
+			console.log("response:");
+			console.dir(response);
 			var name = response.name;
 			senderName = name;
 			console.log("senderName:" + senderName);
