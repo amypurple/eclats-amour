@@ -96,8 +96,8 @@ function generatePositiveMessage() {
 		// Draw the message text on the canvas
 		context.font = "italic " + fontSize + "px 'Brush Script MT', cursive, sans-serif";
 		context.textAlign = "center";
-		var fortuneCookieMessage = getRandomPositiveMessage(receiverName);
-		var messageLines = getLines(context, fortuneCookieMessage, canvas.width - margin);
+		var positiveMessage = getRandomPositiveMessage(receiverName);
+		var messageLines = getLines(context, positiveMessage, canvas.width - margin);
 		context.strokeStyle = "purple";
 		context.lineWidth = 5;
 		context.lineJoin = "round";
@@ -117,6 +117,15 @@ function generatePositiveMessage() {
 		// Display the preview image on the web page
 		var previewImage = document.getElementById("preview-image");
 		previewImage.src = canvas.toDataURL();
+
+		// Update the preview image and alt text
+		var previewImage = document.getElementById("preview-image");
+		previewImage.src = "paper.png";
+		previewImage.alt = "Fortune cookie for " + receiverName + " from " + senderName;
+
+		// Update the share button link
+		var shareButton = document.getElementById("share-button");
+		shareButton.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href) + "&quote=" + encodeURIComponent(positiveMessage);
 
 		// Share the fortune cookie message on Facebook
 		document.getElementById("share-button").addEventListener("click", function () {
