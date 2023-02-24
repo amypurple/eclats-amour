@@ -19,6 +19,8 @@ function updateReceiverName() {
 var formWrapper = document.getElementById("form-wrapper");
 var previewWrapper = document.getElementById("preview-wrapper");
 
+
+
 // JavaScript for the fortune cookie web app
 window.fbAsyncInit = function () {
 	FB.init({
@@ -27,6 +29,8 @@ window.fbAsyncInit = function () {
 		xfbml: true,
 		version: "v12.0",
 	});
+
+	FB.AppEvents.logPageView();
 
 	// Check login status
 	FB.getLoginStatus(function (response) {
