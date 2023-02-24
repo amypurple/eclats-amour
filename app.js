@@ -36,48 +36,56 @@ window.fbAsyncInit = function () {
 
 // Check login status
 function checkLoginState() {
-  FB.getLoginStatus(function (response) {
-    if (response.status === "connected") {
-      // User is logged in and has granted permissions
-      document.getElementById("share-button").style.display = "block";
-      getUserName();
-    } else if (response.status === "not_authorized") {
-      // User is logged in but has not granted permissions
-      FB.login(
-        function (response) {
-          if (response.authResponse) {
-            document.getElementById("share-button").style.display = "block";
-            getUserName();
-          } else {
-            // User has not granted permissions
-            document.getElementById("share-button").style.display = "none";
-            console.error("User has not granted permissions");
-          }
-        },
-        { scope: "public_profile" }
-      );
-    } else {
-      // User is not logged in
-      document.getElementById("share-button").style.display = "none";
-      console.error("User is not logged in");
-    }
-  }, function(error) {
-    console.error("Error occurred while getting login status: ");
-    console.dir(error);
-  });
+	FB.getLoginStatus(
+		function (response) {
+			if (response.status === "connected") {
+				// User is logged in and has granted permissions
+				document.getElementById("share-button").style.display = "block";
+				getUserName();
+			} else if (response.status === "not_authorized") {
+				// User is logged in but has not granted permissions
+				FB.login(
+					function (response) {
+						if (response.authResponse) {
+							document.getElementById("share-button").style.display = "block";
+							getUserName();
+						} else {
+							// User has not granted permissions
+							document.getElementById("share-button").style.display = "none";
+							console.error("User has not granted permissions");
+						}
+					},
+					{ scope: "public_profile" }
+				);
+			} else {
+				// User is not logged in
+				document.getElementById("share-button").style.display = "none";
+				console.error("User is not logged in");
+			}
+		},
+		function (error) {
+			console.error("Error occurred while getting login status: ");
+			console.dir(error);
+		}
+	);
 }
 
 // Get the name of the logged-in Facebook user
 function getUserName() {
-  FB.api("/me", function (response) {
-    var name = response.name;
-    senderName = name;
-    document.getElementById("preview-image").alt = "Fortune cookie preview for " + receiverName + " by " + senderName;
-    generatePositiveMessage();
-  }, function(error) {
-    console.error("Error occurred while getting user name: ");
-    console.dir(error);
-  });
+	FB.api(
+		"/me",
+		function (response) {
+			var name = response.name;
+			senderName = name;
+			console.log("senderName:" + senderName);
+			document.getElementById("preview-image").alt = "Fortune cookie preview for " + receiverName + " by " + senderName;
+			generatePositiveMessage();
+		},
+		function (error) {
+			console.error("Error occurred while getting user name: ");
+			console.dir(error);
+		}
+	);
 }
 
 function generatePositiveMessage() {
@@ -115,6 +123,7 @@ function generatePositiveMessage() {
 		}
 
 		// Get the sender name
+		console.log("senderName:" + senderName);
 		var senderNameText = "De: " + senderName;
 
 		// Draw the sender name on the canvas
