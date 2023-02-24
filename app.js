@@ -116,7 +116,7 @@ function generatePositiveMessage() {
 		}
 
 		// Get the sender name
-		var senderNameText = "From: " + senderName;
+		var senderNameText = "De: " + senderName;
 
 		// Draw the sender name on the canvas
 		context.fillStyle = "black";
