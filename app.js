@@ -45,7 +45,6 @@ function checkLoginState() {
 				console.log("checkLoginState - FB.getLoginStatus - CONNECTED");
 				// User is logged in and has granted permissions
 				document.getElementById("share-button").style.display = "block";
-				getUserName();
 			} else if (response.status === "not_authorized") {
 				console.log("checkLoginState - FB.getLoginStatus - NOT AUTHORIZED");
 				// User is logged in but has not granted permissions
@@ -55,7 +54,6 @@ function checkLoginState() {
 						if (response.authResponse) {
 							console.log("checkLoginState - FB.login - RESPONSE");
 							document.getElementById("share-button").style.display = "block";
-							getUserName();
 						} else {
 							console.log("checkLoginState - FB.login - NOT GRANTED");
 							// User has not granted permissions
@@ -139,6 +137,7 @@ function generatePositiveMessage() {
 		}
 
 		// Get the sender name
+		if (senderName=="") getUserName();
 		console.log("senderName:" + senderName);
 		var senderNameText = "De: " + senderName;
 
