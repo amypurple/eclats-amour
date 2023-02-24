@@ -114,6 +114,16 @@ function generatePositiveMessage() {
 			context.fillText(messageLine, 0, 0);
 			context.restore();
 		}
+
+		// Get the sender name
+		var senderNameText = "From: " + senderName;
+
+		// Draw the sender name on the canvas
+		context.fillStyle = "black";
+		context.font = "bold 16px sans-serif";
+		context.textAlign = "center";
+		context.fillText(senderNameText, cookieImage.width / 2, cookieImage.height - 20);
+
 		// Display the preview image on the web page
 		var previewImage = document.getElementById("preview-image");
 		previewImage.src = canvas.toDataURL();
