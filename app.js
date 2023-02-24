@@ -25,7 +25,7 @@ window.fbAsyncInit = function () {
 		appId: appID,
 		cookie: true,
 		xfbml: true,
-		version: "v12.0",
+		version: "v16.0",
 	});
 
 	FB.AppEvents.logPageView();
