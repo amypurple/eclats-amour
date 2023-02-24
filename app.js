@@ -72,8 +72,7 @@ function getUserName() {
   FB.api("/me", function (response) {
     var name = response.name;
     senderName = name;
-    document.getElementById("preview-image").alt =
-      "Fortune cookie preview for " + receiverName + " by " + savedName;
+    document.getElementById("preview-image").alt = "Fortune cookie preview for " + receiverName + " by " + senderName;
     generatePositiveMessage();
   }, function(error) {
     console.error("Error occurred while getting user name: ");
