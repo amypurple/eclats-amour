@@ -128,11 +128,6 @@ function generatePositiveMessage() {
 		var previewImage = document.getElementById("preview-image");
 		previewImage.src = canvas.toDataURL();
 
-		// Update the preview image and alt text
-		var previewImage = document.getElementById("preview-image");
-		previewImage.src = "paper.png";
-		previewImage.alt = "Fortune cookie for " + receiverName + " from " + senderName;
-
 		// Update the share button link
 		var shareButton = document.getElementById("share-button");
 		shareButton.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href) + "&quote=" + encodeURIComponent(positiveMessage);
