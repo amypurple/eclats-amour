@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Éclats d'Amour</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Éclats d'Amour<span>par Amy Bienvenu</span></h1>    
+      <div id="form-wrapper">
+        <label for="receiverName">À qui envoyer l'éclat d'amour ?</label>
+        <div id="input-button-wrapper">
+            <input type="text" id="receiverName" />
+            <button id="preview-button">Aperçu</button>
+        </div>
+      </div>
+      <div id="preview-wrapper">
+        <img id="preview-image" src="paper.png" alt="Aperçu" />
+        <button id="share-button">Partager</button>
+      </div>
+    </div>
+    <script src="https://connect.facebook.net/fr_FR/sdk.js" async defer></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+[
+	{ "message": "Hey [[name]], tu fais du bon travail aujourd'hui !", "category": "general" },
+	{ "message": "Tu as le pouvoir de rendre cette journée géniale, [[name]] !", "category": "general" },
+	{ "message": "[[name]], ta gentillesse et ta compassion rendent le monde meilleur.", "category": "general" },
+	{ "message": "Tu es fort.e et capable de surmonter tous les obstacles, [[name]] !", "category": "general" },
+	{ "message": "N'oublie pas de prendre soin de toi, [[name]]. Tu le mérites !", "category": "general" },
+	{ "message": "Tu as la capacité de créer du changement positif dans le monde, [[name]].", "category": "general" },
+	{ "message": "Tu es une source d'inspiration pour les autres, [[name]]. Continue à briller !", "category": "general" },
+	{ "message": "N'oublie pas de célébrer tes accomplissements, grands et petits, [[name]].", "category": "general" },
+	{ "message": "Tu es aimé.e et apprécié.e, [[name]].", "category": "love" },
+	{ "message": "Tu as une âme magnifique, [[name]].", "category": "love" },
+	{ "message": "Ta présence dans le monde le rend meilleur, [[name]].", "category": "general" },
+	{ "message": "Tu es capable de réaliser des choses incroyables, [[name]].", "category": "general" },
+	{ "message": "Tu mérites l'amour et le respect, [[name]].", "category": "love" },
+	{ "message": "Tu es une personne unique et merveilleuse, [[name]]. Embrasse ton individualité !", "category": "general" },
+	{
+		"message": "La beauté qui émane de ton être est une source de joie pour tous ceux qui te connaissent, [[name]]",
+		"category": "love"
+	},
+	{
+		"message": "Ton sourire est comme un rayon de soleil dans le ciel, [[name]]",
+		"category": "love"
+	},
+	{
+		"message": "Tes yeux sont comme des étoiles scintillantes dans le ciel nocturne, [[name]]",
+		"category": "love"
+	},
+	{
+		"message": "Je suis reconnaissant(e) pour ta présence dans ma vie, [[name]]",
+		"category": "love"
+	},
+	{
+		"message": "Ton courage et ta force sont une source d'inspiration pour moi, [[name]]",
+		"category": "general"
+	},
+	{
+		"message": "La lumière que tu rayonnes illumine le monde entier, [[name]]",
+		"category": "love"
+	},
+	{
+		"message": "Ta bienveillance et ta compassion sont des qualités rares et précieuses, [[name]]",
+		"category": "general"
+	},
+	{
+		"message": "Ton esprit créatif et imaginatif est un don qui enrichit la vie de tous ceux qui t'entourent, [[name]]",
+		"category": "general"
+	},
+	{
+		"message": "Ton coeur généreux est un exemple pour nous tous, [[name]]",
+		"category": "general"
+	},
+	{
+		"message": "Ton optimisme et ta bonne humeur sont contagieux, [[name]]",
+		"category": "general"
+	},
+	{
+		"message": "Ta sagesse et ton intelligence sont une bénédiction pour le monde, [[name]]",
+		"category": "general"
+	},
+	{
+		"message": "Ton amour et ta gentillesse sont des cadeaux précieux pour ceux qui te connaissent, [[name]]",
+		"category": "love"
+	},
+	{
+		"message": "Ton énergie et ta passion pour la vie sont une inspiration pour moi, [[name]]",
+		"category": "general"
+	},
+	{
+		"message": "Tu es unique et spécial(e) à ta manière, [[name]], ne l'oublie jamais",
+		"category": "general"
+	},
+	{
+		"message": "Ton talent et ta créativité sont des forces qui peuvent changer le monde, [[name]]",
+		"category": "general"
+	},
+	{
+		"message": "Ton courage et ta détermination face à l'adversité sont un exemple à suivre, [[name]]",
+		"category": "general"
+	},
+	{
+		"message": "Ton charme et ta grâce sont incomparables, [[name]]",
+		"category": "love"
+	},
+	{
+		"message": "Ta présence dans ma vie est un cadeau inestimable, [[name]]",
+		"category": "love"
+	},
+	{
+		"message": "Tu es une force de la nature, [[name]], capable de surmonter tous les obstacles",
+		"category": "general"
+	},
+	{
+		"message": "Ta douceur et ta tendresse sont des qualités rares et précieuses, [[name]]",
+		"category": "love"
+	}
+]
