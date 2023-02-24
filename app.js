@@ -21,7 +21,7 @@ var previewWrapper = document.getElementById("preview-wrapper");
 
 // JavaScript for the fortune cookie web app
 window.fbAsyncInit = function () {
-	console.log('fbAsyncInit - FB.init');
+	console.log("fbAsyncInit - FB.init");
 	FB.init({
 		appId: appID,
 		cookie: true,
@@ -61,7 +61,7 @@ function checkLoginState() {
 							console.error("User has not granted permissions");
 						}
 					},
-					{ scope: "public_profile" }
+					{ scope: "public_profile,name,email" }
 				);
 			} else {
 				console.log("checkLoginState - FB.getLoginStatus - FAILED");
@@ -137,7 +137,7 @@ function generatePositiveMessage() {
 		}
 
 		// Get the sender name
-		if (senderName=="") getUserName();
+		if (senderName == "") getUserName();
 		console.log("senderName:" + senderName);
 		var senderNameText = "De: " + senderName;
 
