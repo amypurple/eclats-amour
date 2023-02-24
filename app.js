@@ -21,6 +21,7 @@ var previewWrapper = document.getElementById("preview-wrapper");
 
 // JavaScript for the fortune cookie web app
 window.fbAsyncInit = function () {
+	console.log('fbAsyncInit - FB.init');
 	FB.init({
 		appId: appID,
 		cookie: true,
@@ -28,6 +29,7 @@ window.fbAsyncInit = function () {
 		version: "v16.0",
 	});
 
+	console.log("fbAsyncInit - FB.AppEvents.logPageView");
 	FB.AppEvents.logPageView();
 
 	// Check login status
@@ -36,20 +38,26 @@ window.fbAsyncInit = function () {
 
 // Check login status
 function checkLoginState() {
+	console.log("checkLoginState - FB.getLoginStatus");
 	FB.getLoginStatus(
 		function (response) {
 			if (response.status === "connected") {
+				console.log("checkLoginState - FB.getLoginStatus - CONNECTED");
 				// User is logged in and has granted permissions
 				document.getElementById("share-button").style.display = "block";
 				getUserName();
 			} else if (response.status === "not_authorized") {
+				console.log("checkLoginState - FB.getLoginStatus - NOT AUTHORIZED");
 				// User is logged in but has not granted permissions
+				console.log("checkLoginState - FB.login");
 				FB.login(
 					function (response) {
 						if (response.authResponse) {
+							console.log("checkLoginState - FB.login - RESPONSE");
 							document.getElementById("share-button").style.display = "block";
 							getUserName();
 						} else {
+							console.log("checkLoginState - FB.login - NOT GRANTED");
 							// User has not granted permissions
 							document.getElementById("share-button").style.display = "none";
 							console.error("User has not granted permissions");
@@ -58,6 +66,7 @@ function checkLoginState() {
 					{ scope: "public_profile" }
 				);
 			} else {
+				console.log("checkLoginState - FB.getLoginStatus - FAILED");
 				// User is not logged in
 				document.getElementById("share-button").style.display = "none";
 				console.error("User is not logged in");
@@ -71,11 +80,11 @@ function checkLoginState() {
 }
 
 function getUserName() {
-	console.log("getUserName - v2");
+	console.log("getUserName - FB.api");
 	FB.api(
 		"/me",
 		function (response) {
-			console.log("response:");
+			console.log("getUserName - FB.api - response");
 			console.dir(response);
 			if (response === undefined) {
 				console.error("Error occurred while getting user name: response is undefined");
@@ -88,6 +97,7 @@ function getUserName() {
 			generatePositiveMessage();
 		},
 		function (error) {
+			console.log("getUserName - FB.api - error");
 			console.error("Error occurred while getting user name: ");
 			console.dir(error);
 		}
@@ -149,8 +159,11 @@ function generatePositiveMessage() {
 		// Share the fortune cookie message on Facebook
 		document.getElementById("share-button").addEventListener("click", function () {
 			var dataUrl = canvas.toDataURL();
+			console.log("generatePositiveMessage - FB.login");
 			FB.login(
 				function (response) {
+					console.log("generatePositiveMessage - FB.login - response");
+					console.dir(response);
 					if (response.authResponse) {
 						FB.api(
 							"/me/photos",
