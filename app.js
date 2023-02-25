@@ -137,5 +137,3 @@ document.getElementById("retry-button").addEventListener("click", function () {
 document.getElementById("share-button").addEventListener("click", function () {
 	sharePicture();
 });
-
-export { generatePositiveMessage };
