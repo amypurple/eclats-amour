@@ -12,8 +12,8 @@ var formWrapper = document.getElementById("form-wrapper");
 var previewWrapper = document.getElementById("preview-wrapper");
 
 function getSenderName() {
-	senderName = document.getElementById('senderName').value;
-	return senderName;	
+	senderName = document.getElementById("senderName").value;
+	return senderName;
 }
 
 function getReceiverName() {
@@ -81,28 +81,20 @@ function generatePositiveMessage() {
 			var dataUrl = canvas.toDataURL();
 			console.log("generatePositiveMessage - FB.login");
 			// https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famypurple.github.io%2Feclats-amour%2F&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=734144951415691
-			FB.login(
-				function (response) {
-					console.log("generatePositiveMessage - FB.login - response");
-					console.dir(response);
-					if (response.authResponse) {
-						FB.api(
-							"/me/photos",
-							"post",
-							{
-								url: dataUrl,
-							},
-							function (response) {
-								if (!response || response.error) {
-									alert("An error occurred while sharing your positive message on Facebook.");
-								} else {
-									alert("Your positive message was shared on Facebook.");
-								}
-							}
-						);
-					}
+
+			FB.api(
+				"/me/photos",
+				"post",
+				{
+					url: dataUrl,
 				},
-				{ scope: "publish_actions" }
+				function (response) {
+					if (!response || response.error) {
+						alert("An error occurred while sharing your positive message on Facebook.");
+					} else {
+						alert("Your positive message was shared on Facebook.");
+					}
+				}
 			);
 		});
 	};
