@@ -34,26 +34,26 @@
     </div>
     <script>
 
-      function URLhasParameters()
-      // Get the query parameters from the URL
-      const urlParams = new URLSearchParams(window.location.search);
+      function URLhasParameters() {
+        // Get the query parameters from the URL
+        const urlParams = new URLSearchParams(window.location.search);
 
-      // Check if the index, receiverName, and senderName parameters are present and valid
-      let index = urlParams.get("index");
-      let receiverName = urlParams.get("receiver");
-      let senderName = urlParams.get("sender");
+        // Check if the index, receiverName, and senderName parameters are present and valid
+        let index = urlParams.get("index");
+        let receiverName = urlParams.get("receiver");
+        let senderName = urlParams.get("sender");
 
-      if (index && receiverName && senderName) {
-        // Show the preview-wrapper div and generate the positive message
-        document.getElementById("preview-wrapper").style.display = "block";
-        document.getElementById("form-wrapper").style.display = "none";
-        generatePositiveMessage(index,receiver,sender);
-      } else {
-        // Hide the preview-wrapper div and show the default content
-        document.getElementById("preview-wrapper").style.display = "none";
-        document.getElementById("form-wrapper").style.display = "flex";
+        if (index && receiverName && senderName) {
+          // Show the preview-wrapper div and generate the positive message
+          document.getElementById("preview-wrapper").style.display = "block";
+          document.getElementById("form-wrapper").style.display = "none";
+          generatePositiveMessage(index, receiver, sender);
+        } else {
+          // Hide the preview-wrapper div and show the default content
+          document.getElementById("preview-wrapper").style.display = "none";
+          document.getElementById("form-wrapper").style.display = "flex";
+        }
       }
-
       URLhasParameters();
 
       // JavaScript for the link with Facebook web app
