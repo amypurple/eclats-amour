@@ -106,10 +106,10 @@
       }
 
       function sharePicture() {
-        previewImage = document.getElementById("preview-image");
+        previewImage = document.getElementById("share-button");
         FB.ui({
           method: 'share',
-          href: previewImage.src,
+          href: previewImage.href,
         }, function (response) {
           if (response && !response.error) {
             // create a link to the uploaded photo
