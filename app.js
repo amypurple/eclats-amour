@@ -19,7 +19,7 @@ function updateReceiverName() {
 var formWrapper = document.getElementById("form-wrapper");
 var previewWrapper = document.getElementById("preview-wrapper");
 
-// JavaScript for the fortune cookie web app
+// JavaScript for the link with Facebook web app
 window.fbAsyncInit = function () {
 	console.log("fbAsyncInit - FB.init");
 	FB.init({
@@ -91,7 +91,7 @@ function getUserName() {
 			var name = response.name;
 			senderName = name;
 			console.log("senderName:" + senderName);
-			document.getElementById("preview-image").alt = "Fortune cookie preview for " + receiverName + " by " + senderName;
+			document.getElementById("preview-image").alt = "Positive Message preview for " + receiverName + " by " + senderName;
 			generatePositiveMessage();
 		},
 		function (error) {
@@ -109,7 +109,7 @@ function generatePositiveMessage() {
 		var canvas = document.createElement("canvas");
 		var context = canvas.getContext("2d");
 
-		// Draw the fortune cookie image on the canvas
+		// Draw the canvas
 		canvas.width = 512;
 		canvas.height = 512;
 		context.drawImage(cookieImage, 0, 0);
@@ -155,7 +155,7 @@ function generatePositiveMessage() {
 		var shareButton = document.getElementById("share-button");
 		shareButton.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href) + "&quote=" + encodeURIComponent(positiveMessage);
 
-		// Share the fortune cookie message on Facebook
+		// Share the Positive Message on Facebook
 		document.getElementById("share-button").addEventListener("click", function () {
 			var dataUrl = canvas.toDataURL();
 			console.log("generatePositiveMessage - FB.login");
@@ -172,9 +172,9 @@ function generatePositiveMessage() {
 							},
 							function (response) {
 								if (!response || response.error) {
-									alert("An error occurred while sharing your fortune cookie message on Facebook.");
+									alert("An error occurred while sharing your positive message on Facebook.");
 								} else {
-									alert("Your fortune cookie message was shared on Facebook.");
+									alert("Your positive message was shared on Facebook.");
 								}
 							}
 						);
@@ -205,7 +205,7 @@ function getLines(ctx, text, maxWidth) {
 	return lines;
 }
 
-// Get a random fortune cookie message
+// Get a random positive message
 function getRandomPositiveMessage(name) {
 	// Load the positive messages from a JSON file
 	var xhr = new XMLHttpRequest();
