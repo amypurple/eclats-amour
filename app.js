@@ -79,9 +79,7 @@ function generatePositiveMessage() {
 		// Share the Positive Message on Facebook
 		document.getElementById("share-button").addEventListener("click", function () {
 			var dataUrl = canvas.toDataURL();
-			console.log("generatePositiveMessage - FB.login");
-			// https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famypurple.github.io%2Feclats-amour%2F&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=734144951415691
-
+			console.log("generatePositiveMessage - FB.api");
 			FB.api(
 				"/me/photos",
 				"post",
