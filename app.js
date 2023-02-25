@@ -120,6 +120,6 @@ document.getElementById("preview-button").addEventListener("click", function () 
 });
 
 // Add event listener to the share button
-document.getElementById("preview-button").addEventListener("click", function () {
+document.getElementById("share-button").addEventListener("click", function () {
 	sharePicture();
 });
