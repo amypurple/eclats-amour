@@ -73,7 +73,7 @@ function generatePositiveMessage(messageIndex, receiverName, senderName) {
 		// Update the share button link
 		var shareButton = document.getElementById("share-button");
 		var url = window.location.href + "?index=" + messageIndex + "&receiver=" + encodeURIComponent(receiverName) + "&sender=" + encodeURIComponent(senderName);
-		shareButton.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url) + "&quote=" + encodeURIComponent(positiveMessage);
+		shareButton.value = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url) + "&quote=" + encodeURIComponent(positiveMessage);
 	};
 	cookieImage.src = "paper.png";
 }
@@ -116,6 +116,13 @@ document.getElementById("preview-button").addEventListener("click", function () 
 	// To hide the form wrapper and show the preview wrapper:
 	formWrapper.style.display = "none";
 	previewWrapper.style.display = "block";
+});
+
+// Add event listener to the preview button
+document.getElementById("retry-button").addEventListener("click", function () {
+	// To hide the form wrapper and show the preview wrapper:
+	formWrapper.style.display = "flex";
+	previewWrapper.style.display = "none";
 });
 
 // Add event listener to the share button

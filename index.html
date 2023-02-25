@@ -15,7 +15,7 @@
       <h1>Éclats d'Amour<span>par Amy Bienvenu</span></h1>
       <div id="form-wrapper">
         <label for="receiverName">À qui envoyer l'éclat d'amour ?</label>
-        <div id="input-button-wrapper">
+        <div class="input-button-wrapper">
           <input type="text" id="receiverName" value="Beauté" />
           <input type="hidden" id="senderName" value="La vie" />
           <button id="preview-button">Aperçu</button>
@@ -28,7 +28,10 @@
       </div>
       <div id="preview-wrapper">
         <img id="preview-image" src="paper.png" alt="Aperçu" />
-        <button id="share-button">Partager</button>
+        <div class="input-button-wrapper">
+          <button id="share-button">Partager</button>
+          <button id="retry-button">Recommencer</button>
+        </div>
         <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
       </div>
     </div>
@@ -109,10 +112,10 @@
         FB.ui({
           display: 'popup',
           method: 'share',
-          href: 'https://developers.facebook.com/docs/',
+          href: document.getElementById("share-button").value,
         }, function (response) { });
       }
-      
+
       window.fbAsyncInit = function () {
         FB.init({
           appId: "734144951415691",

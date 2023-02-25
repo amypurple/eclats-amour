@@ -35,7 +35,7 @@ h1 span {
   margin-top: 1em;
 }
 
-#input-button-wrapper {
+.input-button-wrapper {
   margin-top: 1em;
   margin-bottom: 1em;
   display: flex;
@@ -109,6 +109,24 @@ input[type="text"] {
 
 #share-button:hover {
   background-color: #e9457a;
+}
+
+#retry-button {
+  display: block;
+  margin: 0 auto;
+  border: none;
+  border-radius: 0.5em;
+  padding: 1em 2em;
+  font-size: 1.2em;
+  background-color: #1ed85b;
+  color: #fff;
+  box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#retry-button:hover {
+  background-color: #45e97a;
 }
 
 /* Responsive styles */
