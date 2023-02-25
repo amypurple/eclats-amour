@@ -20,9 +20,10 @@ var formWrapper = document.getElementById("form-wrapper");
 var previewWrapper = document.getElementById("preview-wrapper");
 
 function getUserName() {
-	console.log("getUserName - FB.api");
 	FB.api(
 		"/me",
+		"GET",
+		{ fields: "name" },
 		function (response) {
 			console.log("getUserName - FB.api - response");
 			console.dir(response);
