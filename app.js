@@ -72,8 +72,7 @@ function generatePositiveMessage(messageIndex, receiverName, senderName) {
 
 		// Update the share button link
 		var shareButton = document.getElementById("share-button");
-		var url = window.location.href + "?index=" + messageIndex + "&receiver=" + encodeURIComponent(receiverName) + "&sender=" + encodeURIComponent(senderName);
-		shareButton.value = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url) + "&quote=" + encodeURIComponent(positiveMessage);
+		shareButton.value = window.location.href + "?index=" + messageIndex + "&receiver=" + encodeURIComponent(receiverName) + "&sender=" + encodeURIComponent(senderName);
 	};
 	cookieImage.src = "paper.png";
 }
