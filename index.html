@@ -20,25 +20,22 @@
           <!-- Loop through papers 0 to 15 to create the grid of images -->
           <!-- Set onclick event to highlight the selected paper -->
           <script>
-            for (let i = 0; i <= 15; i++) {
-              let img = document.createElement("img");
-              img.width = 128;
-              img.height = 128;
-              img.src = "paper" + i + ".png";
-              img.alt = "paper numero " + i;
-              img.className = "paper";
-              img.value = i;
-              img.onclick = function () {
-                // Highlight the selected paper
-                let papers = document.getElementsByClassName("paper");
-                for (let j = 0; j < papers.length; j++) {
-                  papers[j].classList.remove("selected");
-                }
-                this.classList.add("selected");
-                document.getElementById("secret-button").dataset.paper = this.value;
+          for (let i = 0; i <= 15; i++) {
+            let div = document.createElement("div");
+            div.className = "paper";
+            div.value = i;
+            div.style.backgroundImage = `url(paper${i}.png)`;
+            div.onclick = function () {
+              // Highlight the selected paper
+              let papers = document.getElementsByClassName("paper");
+              for (let j = 0; j < papers.length; j++) {
+                papers[j].classList.remove("selected");
               }
-              document.getElementById("paper-grid").appendChild(img);
-            }
+              this.classList.add("selected");
+              document.getElementById("secret-button").dataset.paper = this.value;
+            };
+            document.getElementById("paper-grid").appendChild(div);
+          }
           </script>
         </div>
         <div class="input-button-wrapper">
