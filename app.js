@@ -75,38 +75,6 @@ function generatePositiveMessage() {
 		// Update the share button link
 		var shareButton = document.getElementById("share-button");
 		shareButton.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href) + "&quote=" + encodeURIComponent(positiveMessage);
-
-		// Share the Positive Message on Facebook
-
-		// convert canvas to data URL
-		var dataURL = canvas.toDataURL("image/png");
-
-		// upload the photo to the user's album
-		FB.api(
-			"/me/photos",
-			"POST",
-			{
-				url: dataURL,
-				no_story: true,
-			},
-			function (response) {
-				if (response && !response.error) {
-					// create a link to the uploaded photo
-					var link = "https://www.facebook.com/photo.php?fbid=" + response.id;
-
-					// create the Facebook post with the link to the uploaded photo
-					FB.ui({
-						method: "feed",
-						link: link,
-						caption: "Check out my awesome image!",
-						description: "I created this using my awesome app.",
-					});
-				} else {
-					console.log(response.error);
-					alert("An error occurred while sharing your image on Facebook.");
-				}
-			}
-		);
 	};
 	cookieImage.src = "paper.png";
 }
@@ -149,4 +117,9 @@ document.getElementById("preview-button").addEventListener("click", function () 
 	// To hide the form wrapper and show the preview wrapper:
 	formWrapper.style.display = "none";
 	previewWrapper.style.display = "block";
+});
+
+// Add event listener to the share button
+document.getElementById("preview-button").addEventListener("click", function () {
+	sharePicture();
 });
