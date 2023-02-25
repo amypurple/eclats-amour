@@ -120,7 +120,7 @@ function getPositiveMessage(index, name) {
 
 // Add event listener to the preview button
 document.getElementById("preview-button").addEventListener("click", function () {
-	generatePositiveMessage(-1,getReceiverName(),getSenderName());
+	generatePositiveMessage(-1, getReceiverName(), getSenderName());
 	// To hide the form wrapper and show the preview wrapper:
 	formWrapper.style.display = "none";
 	previewWrapper.style.display = "block";
@@ -137,3 +137,5 @@ document.getElementById("retry-button").addEventListener("click", function () {
 document.getElementById("share-button").addEventListener("click", function () {
 	sharePicture();
 });
+
+export { generatePositiveMessage };
