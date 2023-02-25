@@ -5,7 +5,7 @@ const fontSize = 42;
 const lineHeight = fontSize * 1.5;
 const margin = 30;
 
-var senderName = "";
+var senderName = "La Vie";
 var receiverName = "Beauté";
 
 function updateReceiverName() {
@@ -79,7 +79,7 @@ function generatePositiveMessage() {
 		}
 
 		// Get the sender name
-		if (senderName == "") getUserName();
+		if (senderName == "La Vie") getUserName();
 		console.log("senderName:" + senderName);
 		var senderNameText = "De: " + senderName;
 
@@ -101,6 +101,7 @@ function generatePositiveMessage() {
 		document.getElementById("share-button").addEventListener("click", function () {
 			var dataUrl = canvas.toDataURL();
 			console.log("generatePositiveMessage - FB.login");
+			// https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famypurple.github.io%2Feclats-amour%2F&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=734144951415691
 			FB.login(
 				function (response) {
 					console.log("generatePositiveMessage - FB.login - response");
