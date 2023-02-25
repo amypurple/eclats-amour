@@ -47,7 +47,7 @@
           data-auto-logout-link="true" data-use-continue-as="true"></div>
       </div>
       <div id="preview-wrapper">
-        <img id="preview-image" src="paper.png" alt="Aperçu" />
+        <img id="preview-image" src="paper0.png" alt="Aperçu" />
         <div class="input-button-wrapper">
           <button id="share-button">Partager</button>
           <button id="retry-button">Recommencer</button>
@@ -165,14 +165,20 @@
           secret.dataset.index = index;
           secret.dataset.receiverName = receiverName;
           secret.dataset.senderName = senderName;
-          document.querySelectorAll("paper")[paper].click();
-          secret.click();
+          object.addEventListener("load", () => {
+              document.querySelectorAll("paper")[paper].click();
+              secret.click();
+            }
+          );
         } else {
           // Hide the preview-wrapper div and show the default content
           document.getElementById("preview-wrapper").style.display = "none";
           document.getElementById("form-wrapper").style.display = "flex";
           document.getElementById("secret-button").dataset.paper = 0;
-          document.querySelectorAll("paper")[0].click();
+          object.addEventListener("load", () => {
+            document.querySelectorAll("paper")[0].click();
+          }
+          );
         }
       }
       URLhasParameters();    
