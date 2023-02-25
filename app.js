@@ -21,15 +21,12 @@ function getReceiverName() {
 	return receiverName;
 }
 
-function generatePositiveMessage() {
+function generatePositiveMessage(messageIndex, receiverName, senderName) {
 	var cookieImage = new Image();
 	cookieImage.crossOrigin = "anonymous";
 	cookieImage.onload = function () {
 		var canvas = document.createElement("canvas");
 		var context = canvas.getContext("2d");
-
-		// Receiver name
-		getReceiverName();
 
 		// Draw the canvas
 		canvas.width = 512;
@@ -39,7 +36,7 @@ function generatePositiveMessage() {
 		// Draw the message text on the canvas
 		context.font = "italic " + fontSize + "px 'Brush Script MT', cursive, sans-serif";
 		context.textAlign = "center";
-		var positiveMessage = getRandomPositiveMessage(receiverName);
+		var positiveMessage = getPositiveMessage(messageIndex, receiverName);
 		var messageLines = getLines(context, positiveMessage, canvas.width - margin);
 		context.strokeStyle = "purple";
 		context.lineWidth = 5;
@@ -58,14 +55,15 @@ function generatePositiveMessage() {
 			context.restore();
 		}
 
-		// Get the sender name
-		getSenderName();
-		var senderNameText = "De: " + senderName;
-
-		// Draw the sender name on the canvas
+		// Draw the receiver name on the canvas
+		var receiverNameText = "À: " + receiverName;
 		context.fillStyle = "black";
 		context.font = "bold 16px sans-serif";
 		context.textAlign = "center";
+		context.fillText(receiverNameText, cookieImage.width / 2, 25);
+
+		// Draw the sender name on the canvas
+		var senderNameText = "De: " + senderName;
 		context.fillText(senderNameText, cookieImage.width / 2, cookieImage.height - 20);
 
 		// Display the preview image on the web page
@@ -74,7 +72,8 @@ function generatePositiveMessage() {
 
 		// Update the share button link
 		var shareButton = document.getElementById("share-button");
-		shareButton.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href) + "&quote=" + encodeURIComponent(positiveMessage);
+		var url = window.location.href + "?index=" + messageIndex + "&receiver=" + encodeURIComponent(receiverName) + "&sender=" + encodeURIComponent(senderName);
+		shareButton.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url) + "&quote=" + encodeURIComponent(positiveMessage);
 	};
 	cookieImage.src = "paper.png";
 }
@@ -97,29 +96,31 @@ function getLines(ctx, text, maxWidth) {
 	return lines;
 }
 
-// Get a random positive message
-function getRandomPositiveMessage(name) {
+function getPositiveMessage(index, name) {
 	// Load the positive messages from a JSON file
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", "positive_messages.json", false);
 	xhr.send();
 	var messages = JSON.parse(xhr.responseText);
+	if (index<0) index = Math.floor(Math.random() * messages.length);
 
-	// Select a random message and replace the [[name]] token with the user's name
-	var message = messages[Math.floor(Math.random() * messages.length)];
-	texte = message.message.replace("[[name]]", name);
-	return texte;
+	// Select the message at the specified index and replace the [[name]] token with the user's name
+	var message = messages[index];
+	var text = message.message.replace("[[name]]", name);
+	return text;
 }
 
 // Add event listener to the preview button
 document.getElementById("preview-button").addEventListener("click", function () {
-	generatePositiveMessage();
+	generatePositiveMessage(-1,getReceiverName(),getSenderName());
 	// To hide the form wrapper and show the preview wrapper:
 	formWrapper.style.display = "none";
 	previewWrapper.style.display = "block";
 });
 
 // Add event listener to the share button
+/*
 document.getElementById("share-button").addEventListener("click", function () {
 	sharePicture();
 });
+*/
