@@ -14,7 +14,8 @@
 			<div id="form-wrapper">
 				<label for="receiverName">À qui envoyer l'éclat d'amour ?</label>
 				<div id="input-button-wrapper">
-					<input type="text" id="receiverName" />
+					<input type="text" id="receiverName" value="Beauté"/>
+          <input type="hidden" id="senderName" value="La vie"/>
 					<button id="preview-button">Aperçu</button>
 				</div>
 				<script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_CA/sdk.js#xfbml=1&version=v16.0&appId=734144951415691&autoLogAppEvents=1" nonce="INA6wtTh"></script>
@@ -39,6 +40,7 @@
               // User is logged in and has granted permissions
               document.getElementById("share-button").style.display = "block";
               FB.api('/me', 'GET', { fields: 'name' }, function(response) {
+                document.getElementById("senderName").value = response.name;
                 console.log("FB.api with GET name : "+response.name);
               });              
             } else if (response.status === "not_authorized") {
