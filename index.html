@@ -37,32 +37,6 @@
       </div>
     </div>
     <script>
-
-      function URLhasParameters() {
-        // Get the query parameters from the URL
-        const urlParams = new URLSearchParams(window.location.search);
-
-        // Check if the index, receiverName, and senderName parameters are present and valid
-        let index = urlParams.get("index");
-        let receiverName = urlParams.get("receiver");
-        let senderName = urlParams.get("sender");
-        document.getElementById("receiverName").value = senderName;
-
-        if (index && receiverName && senderName) {
-          // Show the preview-wrapper div and generate the positive message
-          let secret = document.getElementById("secret-button");
-          secret.dataset.index = index;
-          secret.dataset.receiverName = receiverName;
-          secret.dataset.senderName = senderName;
-          secret.click();
-        } else {
-          // Hide the preview-wrapper div and show the default content
-          document.getElementById("preview-wrapper").style.display = "none";
-          document.getElementById("form-wrapper").style.display = "flex";
-        }
-      }
-      URLhasParameters();
-
       // JavaScript for the link with Facebook web app
       // Check login status
       function checkLoginState() {
@@ -153,6 +127,32 @@
       })(document, "script", "facebook-jssdk");
     </script>
     <script src="app.js"></script>
+    <script>
+    function URLhasParameters() {
+      // Get the query parameters from the URL
+      const urlParams = new URLSearchParams(window.location.search);
+
+      // Check if the index, receiverName, and senderName parameters are present and valid
+      let index = urlParams.get("index");
+      let receiverName = urlParams.get("receiver");
+      let senderName = urlParams.get("sender");
+      document.getElementById("receiverName").value = senderName;
+
+      if (index && receiverName && senderName) {
+        // Show the preview-wrapper div and generate the positive message
+        let secret = document.getElementById("secret-button");
+        secret.dataset.index = index;
+        secret.dataset.receiverName = receiverName;
+        secret.dataset.senderName = senderName;
+        secret.click();
+      } else {
+        // Hide the preview-wrapper div and show the default content
+        document.getElementById("preview-wrapper").style.display = "none";
+        document.getElementById("form-wrapper").style.display = "flex";
+      }
+    }
+    URLhasParameters();    
+    </script>
   </body>
 
 </html>
