@@ -88,6 +88,7 @@ function generatePositiveMessage() {
 				},
 				function (response) {
 					if (!response || response.error) {
+						console.log(response.error);
 						alert("An error occurred while sharing your positive message on Facebook.");
 					} else {
 						alert("Your positive message was shared on Facebook.");
