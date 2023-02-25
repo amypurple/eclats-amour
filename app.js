@@ -1,12 +1,13 @@
 const appID = "734144951415691";
 
 // Draw the message text on the canvas
-const fontSize = 42;
+const fontSize = 48;
 const lineHeight = fontSize * 1.5;
 const margin = 30;
 
 var senderName = "La Vie";
 var receiverName = "Beauté";
+var paperName = 0;
 
 var formWrapper = document.getElementById("form-wrapper");
 var previewWrapper = document.getElementById("preview-wrapper");
@@ -21,7 +22,12 @@ function getReceiverName() {
 	return receiverName;
 }
 
-function generatePositiveMessage(messageIndex, receiverName, senderName) {
+function getPaperName() {
+	paperName = document.getElementById("paperName").value;
+	return paperName;
+}
+
+function generatePositiveMessage(paper, messageIndex, receiverName, senderName) {
 	var cookieImage = new Image();
 	cookieImage.crossOrigin = "anonymous";
 	cookieImage.onload = function () {
@@ -58,8 +64,12 @@ function generatePositiveMessage(messageIndex, receiverName, senderName) {
 
 		// Draw the receiver name on the canvas
 		var receiverNameText = "À: " + receiverName;
+		context.strokeStyle = "coral";
+		context.lineWidth = 3;
+		context.lineJoin = "round";
+		context.miterLimit = 2;
 		context.fillStyle = "black";
-		context.font = "bold 16px sans-serif";
+		context.font = "bold 18px sans-serif";
 		context.textAlign = "center";
 		context.fillText(receiverNameText, cookieImage.width / 2, 25);
 
@@ -75,7 +85,7 @@ function generatePositiveMessage(messageIndex, receiverName, senderName) {
 		var shareButton = document.getElementById("share-button");
 		shareButton.value = window.location.href + "?index=" + messageIndex + "&receiver=" + encodeURIComponent(receiverName) + "&sender=" + encodeURIComponent(senderName);
 	};
-	cookieImage.src = "paper.png";
+	cookieImage.src = "paper"+paper+".png";
 }
 
 function getLines(ctx, text, maxWidth) {
@@ -130,11 +140,12 @@ document.getElementById("preview-button").addEventListener("click", function () 
 document.getElementById("secret-button").addEventListener("click", function () {
 	console.log("secret button is clicked");
 	let secret = document.getElementById("secret-button");
+	paper = secret.dataset.paper;
 	index = secret.dataset.index;
 	receiverName = secret.dataset.receiverName;
 	senderName = secret.dataset.senderName;
 	console.log(index,receiverName,senderName);
-	generatePositiveMessage(index, receiverName, senderName);
+	generatePositiveMessage(paper, index, receiverName, senderName);
 	// To hide the form wrapper and show the preview wrapper:
 	formWrapper.style.display = "none";
 	previewWrapper.style.display = "block";
