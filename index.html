@@ -16,7 +16,8 @@
       <h1>Éclats d'Amour<span>par Amy Bienvenu</span></h1>
       <div id="form-wrapper">
         <label for="receiverName">À qui envoyer l'éclat d'amour ?</label>
-        <div id="form-paper-grid"></div>
+        <div id="form-paper-grid" style="width: 80%; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px;">
+        </div>
         <div class="input-button-wrapper">
           <input type="text" id="receiverName" value="Beauté" />
           <input type="hidden" id="senderName" value="La vie" />
@@ -144,7 +145,7 @@
           secret.dataset.index = index;
           secret.dataset.receiverName = receiverName;
           secret.dataset.senderName = senderName;
-          
+
           document.addEventListener("load", () => {
             document.querySelectorAll("paper")[paper].click();
             secret.click();
@@ -177,7 +178,7 @@
           document.getElementById("secret-button").dataset.paper = this.value;
         };
         document.getElementById("form-paper-grid").appendChild(div);
-      }      
+      }
       URLhasParameters();    
     </script>
   </body>
