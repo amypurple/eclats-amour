@@ -22,8 +22,8 @@
           <script>
             for (let i = 0; i <= 15; i++) {
               let img = document.createElement("img");
-              img.maxWidth = 128;
-              img.maxHeight = 128;
+              img.width = 128;
+              img.height = 128;
               img.src = "paper" + i + ".png";
               img.alt = "paper numero " + i;
               img.className = "paper";
@@ -40,7 +40,7 @@
               document.getElementById("paper-grid").appendChild(img);
             }
           </script>
-        </div>        
+        </div>
         <div class="input-button-wrapper">
           <input type="text" id="receiverName" value="Beauté" />
           <input type="hidden" id="senderName" value="La vie" />
@@ -150,32 +150,32 @@
     </script>
     <script src="app.js"></script>
     <script>
-    function URLhasParameters() {
-      // Get the query parameters from the URL
-      const urlParams = new URLSearchParams(window.location.search);
+      function URLhasParameters() {
+        // Get the query parameters from the URL
+        const urlParams = new URLSearchParams(window.location.search);
 
-      // Check if the index, receiverName, and senderName parameters are present and valid
-      let paper = urlParams.get("paper") || 0;
-      let index = urlParams.get("index");
-      let receiverName = urlParams.get("receiver");
-      let senderName = urlParams.get("sender");
-      document.getElementById("receiverName").value = senderName;
+        // Check if the index, receiverName, and senderName parameters are present and valid
+        let paper = urlParams.get("paper") || 0;
+        let index = urlParams.get("index");
+        let receiverName = urlParams.get("receiver");
+        let senderName = urlParams.get("sender");
+        document.getElementById("receiverName").value = senderName;
 
-      if (index && receiverName && senderName) {
-        // Show the preview-wrapper div and generate the positive message
-        let secret = document.getElementById("secret-button");
-        secret.dataset.paper = paper;
-        secret.dataset.index = index;
-        secret.dataset.receiverName = receiverName;
-        secret.dataset.senderName = senderName;
-        secret.click();
-      } else {
-        // Hide the preview-wrapper div and show the default content
-        document.getElementById("preview-wrapper").style.display = "none";
-        document.getElementById("form-wrapper").style.display = "flex";
+        if (index && receiverName && senderName) {
+          // Show the preview-wrapper div and generate the positive message
+          let secret = document.getElementById("secret-button");
+          secret.dataset.paper = paper;
+          secret.dataset.index = index;
+          secret.dataset.receiverName = receiverName;
+          secret.dataset.senderName = senderName;
+          secret.click();
+        } else {
+          // Hide the preview-wrapper div and show the default content
+          document.getElementById("preview-wrapper").style.display = "none";
+          document.getElementById("form-wrapper").style.display = "flex";
+        }
       }
-    }
-    URLhasParameters();    
+      URLhasParameters();    
     </script>
   </body>
 
