@@ -36,6 +36,7 @@ function generatePositiveMessage(messageIndex, receiverName, senderName) {
 		// Draw the message text on the canvas
 		context.font = "italic " + fontSize + "px 'Brush Script MT', cursive, sans-serif";
 		context.textAlign = "center";
+		if (messageIndex < 0) messageIndex = getRandomIndex();
 		var positiveMessage = getPositiveMessage(messageIndex, receiverName);
 		var messageLines = getLines(context, positiveMessage, canvas.width - margin);
 		context.strokeStyle = "purple";
@@ -95,13 +96,21 @@ function getLines(ctx, text, maxWidth) {
 	return lines;
 }
 
+function getRandomIndex(index, name) {
+	// Load the positive messages from a JSON file
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "positive_messages.json", false);
+	xhr.send();
+	var messages = JSON.parse(xhr.responseText);
+	return Math.floor(Math.random() * messages.length);
+}
+
 function getPositiveMessage(index, name) {
 	// Load the positive messages from a JSON file
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", "positive_messages.json", false);
 	xhr.send();
 	var messages = JSON.parse(xhr.responseText);
-	if (index<0) index = Math.floor(Math.random() * messages.length);
 
 	// Select the message at the specified index and replace the [[name]] token with the user's name
 	var message = messages[index];
