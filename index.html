@@ -45,12 +45,13 @@
         let index = urlParams.get("index");
         let receiverName = urlParams.get("receiver");
         let senderName = urlParams.get("sender");
+        document.getElementById("receiverName").value = sender;
 
         if (index && receiverName && senderName) {
           // Show the preview-wrapper div and generate the positive message
           document.getElementById("preview-wrapper").style.display = "block";
           document.getElementById("form-wrapper").style.display = "none";
-          generatePositiveMessage(index, receiver, sender);
+          generatePositiveMessage(index, receiverName, senderName);
         } else {
           // Hide the preview-wrapper div and show the default content
           document.getElementById("preview-wrapper").style.display = "none";
