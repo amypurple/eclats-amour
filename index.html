@@ -58,11 +58,11 @@
                     console.error("User has not granted permissions");
                   }
                 },
-                { scope: "public_profile" };
-                FB.api('/me', 'GET', { fields: 'name' }, function(response) {
-                  console.log("FB.api with GET name : "+response.name);
-                });
+                { scope: "public_profile" }
               );
+              FB.api('/me', 'GET', { fields: 'name' }, function(response) {
+                console.log("FB.api with GET name : "+response.name);
+              });              
             } else {
               console.log("checkLoginState - FB.getLoginStatus - FAILED");
               // User is not logged in
