@@ -25,22 +25,10 @@ function getUserName() {
 		"GET",
 		{ fields: "name" },
 		function (response) {
-			console.log("getUserName - FB.api - response");
-			console.dir(response);
-			if (response === undefined) {
-				console.error("Error occurred while getting user name: response is undefined");
-				return;
-			}
-			var name = response.name;
-			senderName = name;
+			senderName = response.name;
 			console.log("senderName:" + senderName);
 			document.getElementById("preview-image").alt = "Positive Message preview for " + receiverName + " by " + senderName;
 			generatePositiveMessage();
-		},
-		function (error) {
-			console.log("getUserName - FB.api - error");
-			console.error("Error occurred while getting user name: ");
-			console.dir(error);
 		}
 	);
 }
