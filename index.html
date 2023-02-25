@@ -56,6 +56,9 @@
                   }
                 },
                 { scope: "public_profile" }
+                FB.api('/me', 'GET', { fields: 'name' }, function(response) {
+                  console.log("FB.api with GET name : "+response.name);
+                });
               );
             } else {
               console.log("checkLoginState - FB.getLoginStatus - FAILED");
@@ -70,7 +73,7 @@
           }
         );
       }    
-      
+
 			window.fbAsyncInit = function () {
 				FB.init({
 					appId: "734144951415691",
