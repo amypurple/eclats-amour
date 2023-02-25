@@ -165,17 +165,17 @@
           secret.dataset.index = index;
           secret.dataset.receiverName = receiverName;
           secret.dataset.senderName = senderName;
-          object.addEventListener("load", () => {
-              document.querySelectorAll("paper")[paper].click();
-              secret.click();
-            }
+          document.addEventListener("load", () => {
+            document.querySelectorAll("paper")[paper].click();
+            secret.click();
+          }
           );
         } else {
           // Hide the preview-wrapper div and show the default content
           document.getElementById("preview-wrapper").style.display = "none";
           document.getElementById("form-wrapper").style.display = "flex";
           document.getElementById("secret-button").dataset.paper = 0;
-          object.addEventListener("load", () => {
+          document.addEventListener("load", () => {
             document.querySelectorAll("paper")[0].click();
           }
           );
