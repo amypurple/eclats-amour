@@ -106,30 +106,13 @@
       }
 
       function sharePicture() {
-        previewImage = document.getElementById("share-button");
         FB.ui({
+          display: 'popup',
           method: 'share',
-          href: previewImage.href,
-        }, function (response) {
-          if (response && !response.error) {
-            // create a link to the uploaded photo
-            var link = "https://www.facebook.com/photo.php?fbid=" + response.id;
-
-            // create the Facebook post with the link to the uploaded photo
-            FB.ui({
-              method: "feed",
-              app_id: 734144951415691,
-              link: link,
-            }, function (response) {
-              console.log(response);
-            });
-          } else {
-            console.log(response.error);
-            alert("An error occurred while sharing your image on Facebook.");
-          }
-        });
+          href: 'https://developers.facebook.com/docs/',
+        }, function (response) { });
       }
-
+      
       window.fbAsyncInit = function () {
         FB.init({
           appId: "734144951415691",
