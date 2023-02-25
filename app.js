@@ -127,6 +127,18 @@ document.getElementById("preview-button").addEventListener("click", function () 
 });
 
 // Add event listener to the preview button
+document.getElementById("secret-button").addEventListener("click", function () {
+	let secret = document.getElementById("secret-button");
+	index = secret.dataset.index;
+	receiverName = secret.dataset.receiverName;
+	senderName = secret.dataset.senderName;
+	generatePositiveMessage(index, receiverName, senderName);
+	// To hide the form wrapper and show the preview wrapper:
+	formWrapper.style.display = "none";
+	previewWrapper.style.display = "block";
+});
+
+// Add event listener to the preview button
 document.getElementById("retry-button").addEventListener("click", function () {
 	// To hide the form wrapper and show the preview wrapper:
 	formWrapper.style.display = "flex";

@@ -11,6 +11,7 @@
 
   <body>
     <div id="fb-root"></div>
+    <button id="secret-button" style="display:none">.</button>
     <div id="wrapper">
       <h1>Éclats d'Amour<span>par Amy Bienvenu</span></h1>
       <div id="form-wrapper">
@@ -51,7 +52,11 @@
           // Show the preview-wrapper div and generate the positive message
           document.getElementById("preview-wrapper").style.display = "block";
           document.getElementById("form-wrapper").style.display = "none";
-          generatePositiveMessage(index, receiverName, senderName);
+          let secret = document.getElementById("secret-button");
+          secret.dataset.index = index;
+          secret.dataset.receiverName = receiverName;
+          secret.dataset.senderName = senderName;
+          secret.click();
         } else {
           // Hide the preview-wrapper div and show the default content
           document.getElementById("preview-wrapper").style.display = "none";
@@ -110,14 +115,14 @@
       }
 
       function sharePicture() {
-  // FB.ui({
-  //   display: 'popup',
-  //   method: 'share_open_graph',
-  //   action_type: 'og.likes',
-  //   action_properties: JSON.stringify({
-  //       object:'https://developers.facebook.com/docs/',
-  //   })
-  // }, function(response){});        
+        // FB.ui({
+        //   display: 'popup',
+        //   method: 'share_open_graph',
+        //   action_type: 'og.likes',
+        //   action_properties: JSON.stringify({
+        //       object:'https://developers.facebook.com/docs/',
+        //   })
+        // }, function(response){});        
         FB.ui({
           display: 'popup',
           method: 'share',
