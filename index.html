@@ -85,31 +85,63 @@
 
       function sharePicture() {
         var canvas = document.getElementById("preview-image");
+        console.log('canvas');
+        console.dir(canvas);
 
-        // convert canvas to Blob
-        canvas.toBlob(function (blob) {
-          // create a new FormData object
-          var formData = new FormData();
-          formData.append("access_token", FB.getAccessToken());
-          formData.append("source", blob, "image.png");
+        // convert canvas to data URL
+        var dataURL = canvas.toDataURL("image/png");
 
-          // send the image data to Facebook
-          var xhr = new XMLHttpRequest();
-          xhr.open("POST", "https://graph.facebook.com/me/photos");
-          xhr.send(formData);
+        // remove the data URL prefix
+        var base64Data = dataURL.replace(/^data:image\/(png|jpeg);base64,/, "");
 
-          xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-              if (xhr.status === 200) {
-                // the image was uploaded successfully
-                console.log("Image uploaded successfully");
-              } else {
-                // there was an error uploading the image
-                console.log("Error uploading image");
-              }
+        // convert base64 data to a Blob object
+        var blob = b64toBlob(base64Data, "image/png");
+
+        // upload the photo to the user's album
+        FB.api(
+          "/me/photos",
+          "POST",
+          {
+            source: blob,
+            no_story: true,
+          },
+          function (response) {
+            if (response && !response.error) {
+              // create a link to the uploaded photo
+              var link = "https://www.facebook.com/photo.php?fbid=" + response.id;
+
+              // create the Facebook post with the link to the uploaded photo
+              FB.ui({
+                method: "feed",
+                link: link,
+                caption: "Check out my awesome image!",
+                description: "I created this using my awesome app.",
+              });
+            } else {
+              console.log(response.error);
+              alert("An error occurred while sharing your image on Facebook.");
             }
-          };
-        }, "image/png");
+          }
+        );
+      }
+
+      // convert a base64 string to a Blob object
+      function b64toBlob(b64Data, contentType) {
+        contentType = contentType || "";
+        var sliceSize = 512;
+        var byteCharacters = atob(b64Data);
+        var byteArrays = [];
+        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+          var slice = byteCharacters.slice(offset, offset + sliceSize);
+          var byteNumbers = new Array(slice.length);
+          for (var i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+          }
+          var byteArray = new Uint8Array(byteNumbers);
+          byteArrays.push(byteArray);
+        }
+        var blob = new Blob(byteArrays, { type: contentType });
+        return blob;
       }
 
 
