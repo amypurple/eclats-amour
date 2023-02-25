@@ -61,7 +61,7 @@ function checkLoginState() {
 							console.error("User has not granted permissions");
 						}
 					},
-					{ scope: "public_profile,name,email" }
+					{ scope: "public_profile" }
 				);
 			} else {
 				console.log("checkLoginState - FB.getLoginStatus - FAILED");
