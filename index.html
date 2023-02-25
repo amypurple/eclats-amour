@@ -84,19 +84,14 @@
       }
 
       function sharePicture() {
-        canvas = document.getElementById("preview-image");
-        console.log('canvas');
-        console.log(typeof canvas);
-        console.dir(canvas);
-        // convert canvas to data URL
-        var dataURL = canvas.toDataURL("image/png");
+        previewImage = document.getElementById("preview-image");
 
         // upload the photo to the user's album
         FB.api(
           "/me/photos",
           "POST",
           {
-            url: dataURL,
+            url: previewImage.src,
             no_story: true,
           },
           function (response) {
