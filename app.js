@@ -20,21 +20,6 @@ var formWrapper = document.getElementById("form-wrapper");
 var previewWrapper = document.getElementById("preview-wrapper");
 
 // JavaScript for the link with Facebook web app
-window.fbAsyncInit = function () {
-	console.log("fbAsyncInit - FB.init");
-	FB.init({
-		appId: appID,
-		cookie: true,
-		xfbml: true,
-		version: "v16.0",
-	});
-
-	console.log("fbAsyncInit - FB.AppEvents.logPageView");
-	FB.AppEvents.logPageView();
-
-	// Check login status
-	checkLoginState();
-};
 
 // Check login status
 function checkLoginState() {
