@@ -22,9 +22,10 @@
           <script>
             for (let i = 0; i <= 15; i++) {
               let img = document.createElement("img");
-              img.width = 64;
-              img.height = 64;
+              img.maxWidth = 128;
+              img.maxHeight = 128;
               img.src = "paper" + i + ".png";
+              img.alt = "paper numero " + i;
               img.className = "paper";
               img.value = i;
               img.onclick = function () {

@@ -169,7 +169,7 @@ input[type="text"] {
   #paper-grid {
     display:grid;
     grid-template-columns: 25% 25% 25% 25%;
-    gap: 1em;
+    gap: 0.4em;
   }
 
   .paper {
