@@ -165,14 +165,14 @@
           secret.dataset.index = index;
           secret.dataset.receiverName = receiverName;
           secret.dataset.senderName = senderName;
-          document.getElementById("paper-grid").querySelectorAll("paper")[paper].click();
+          document.querySelectorAll("paper")[paper].click();
           secret.click();
         } else {
           // Hide the preview-wrapper div and show the default content
           document.getElementById("preview-wrapper").style.display = "none";
           document.getElementById("form-wrapper").style.display = "flex";
           document.getElementById("secret-button").dataset.paper = 0;
-          document.getElementById("paper-grid").querySelectorAll("paper")[0].click();
+          document.querySelectorAll("paper")[0].click();
         }
       }
       URLhasParameters();    
