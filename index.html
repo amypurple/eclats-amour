@@ -20,22 +20,22 @@
           <!-- Loop through papers 0 to 15 to create the grid of images -->
           <!-- Set onclick event to highlight the selected paper -->
           <script>
-          for (let i = 0; i <= 15; i++) {
-            let div = document.createElement("div");
-            div.className = "paper";
-            div.value = i;
-            div.style.backgroundImage = `url(paper${i}.png)`;
-            div.onclick = function () {
-              // Highlight the selected paper
-              let papers = document.getElementsByClassName("paper");
-              for (let j = 0; j < papers.length; j++) {
-                papers[j].classList.remove("selected");
-              }
-              this.classList.add("selected");
-              document.getElementById("secret-button").dataset.paper = this.value;
-            };
-            document.getElementById("paper-grid").appendChild(div);
-          }
+            for (let i = 0; i <= 15; i++) {
+              let div = document.createElement("div");
+              div.className = "paper";
+              div.value = i;
+              div.style.backgroundImage = `url(paper${i}.png)`;
+              div.onclick = function () {
+                // Highlight the selected paper
+                let papers = document.getElementsByClassName("paper");
+                for (let j = 0; j < papers.length; j++) {
+                  papers[j].classList.remove("selected");
+                }
+                this.classList.add("selected");
+                document.getElementById("secret-button").dataset.paper = this.value;
+              };
+              document.getElementById("paper-grid").appendChild(div);
+            }
           </script>
         </div>
         <div class="input-button-wrapper">
@@ -152,7 +152,7 @@
         const urlParams = new URLSearchParams(window.location.search);
 
         // Check if the index, receiverName, and senderName parameters are present and valid
-        let paper = urlParams.get("paper") || 0;
+        let paper = parseInt(urlParams.get("paper")) || 0;
         let index = urlParams.get("index");
         let receiverName = urlParams.get("receiver");
         let senderName = urlParams.get("sender");
@@ -165,11 +165,14 @@
           secret.dataset.index = index;
           secret.dataset.receiverName = receiverName;
           secret.dataset.senderName = senderName;
+          document.getElementById("paper-grid").querySelectorAll("paper")[paper].click();
           secret.click();
         } else {
           // Hide the preview-wrapper div and show the default content
           document.getElementById("preview-wrapper").style.display = "none";
           document.getElementById("form-wrapper").style.display = "flex";
+          document.getElementById("secret-button").dataset.paper = 0;
+          document.getElementById("paper-grid").querySelectorAll("paper")[0].click();
         }
       }
       URLhasParameters();    
