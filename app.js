@@ -19,49 +19,6 @@ function updateReceiverName() {
 var formWrapper = document.getElementById("form-wrapper");
 var previewWrapper = document.getElementById("preview-wrapper");
 
-// JavaScript for the link with Facebook web app
-
-// Check login status
-function checkLoginState() {
-	console.log("checkLoginState - FB.getLoginStatus");
-	FB.getLoginStatus(
-		function (response) {
-			if (response.status === "connected") {
-				console.log("checkLoginState - FB.getLoginStatus - CONNECTED");
-				// User is logged in and has granted permissions
-				document.getElementById("share-button").style.display = "block";
-			} else if (response.status === "not_authorized") {
-				console.log("checkLoginState - FB.getLoginStatus - NOT AUTHORIZED");
-				// User is logged in but has not granted permissions
-				console.log("checkLoginState - FB.login");
-				FB.login(
-					function (response) {
-						if (response.authResponse) {
-							console.log("checkLoginState - FB.login - RESPONSE");
-							document.getElementById("share-button").style.display = "block";
-						} else {
-							console.log("checkLoginState - FB.login - NOT GRANTED");
-							// User has not granted permissions
-							document.getElementById("share-button").style.display = "none";
-							console.error("User has not granted permissions");
-						}
-					},
-					{ scope: "public_profile" }
-				);
-			} else {
-				console.log("checkLoginState - FB.getLoginStatus - FAILED");
-				// User is not logged in
-				document.getElementById("share-button").style.display = "none";
-				console.error("User is not logged in");
-			}
-		},
-		function (error) {
-			console.error("Error occurred while getting login status: ");
-			console.dir(error);
-		}
-	);
-}
-
 function getUserName() {
 	console.log("getUserName - FB.api");
 	FB.api(
