@@ -84,48 +84,32 @@
       }
 
       function sharePicture() {
-        var previewImage = document.getElementById("preview-image");
+        var canvas = document.getElementById("preview-image");
 
-        // create a new canvas element
-        var canvas = document.createElement("canvas");
+        // convert canvas to Blob
+        canvas.toBlob(function (blob) {
+          // create a new FormData object
+          var formData = new FormData();
+          formData.append("access_token", FB.getAccessToken());
+          formData.append("source", blob, "image.png");
 
-        // set the canvas size to match the image size
-        canvas.width = previewImage.width;
-        canvas.height = previewImage.height;
+          // send the image data to Facebook
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "https://graph.facebook.com/me/photos");
+          xhr.send(formData);
 
-        // draw the image onto the canvas
-        var context = canvas.getContext("2d");
-        context.drawImage(previewImage, 0, 0);
-
-        // convert canvas to data URL
-        var dataURL = canvas.toDataURL("image/png");
-
-        // upload the photo to the user's album
-        FB.api(
-          "/me/photos",
-          "POST",
-          {
-            url: dataURL,
-            no_story: true,
-          },
-          function (response) {
-            if (response && !response.error) {
-              // create a link to the uploaded photo
-              var link = "https://www.facebook.com/photo.php?fbid=" + response.id;
-
-              // create the Facebook post with the link to the uploaded photo
-              FB.ui({
-                method: "feed",
-                link: link,
-                caption: "Check out my awesome image!",
-                description: "I created this using my awesome app.",
-              });
-            } else {
-              console.log(response.error);
-              alert("An error occurred while sharing your image on Facebook.");
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                // the image was uploaded successfully
+                console.log("Image uploaded successfully");
+              } else {
+                // there was an error uploading the image
+                console.log("Error uploading image");
+              }
             }
-          }
-        );
+          };
+        }, "image/png");
       }
 
 
