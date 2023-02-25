@@ -77,25 +77,36 @@ function generatePositiveMessage() {
 		shareButton.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href) + "&quote=" + encodeURIComponent(positiveMessage);
 
 		// Share the Positive Message on Facebook
-		document.getElementById("share-button").addEventListener("click", function () {
-			var dataUrl = canvas.toDataURL();
-			console.log("generatePositiveMessage - FB.api");
-			FB.api(
-				"/me/photos",
-				"post",
-				{
-					url: dataUrl,
-				},
-				function (response) {
-					if (!response || response.error) {
-						console.log(response.error);
-						alert("An error occurred while sharing your positive message on Facebook.");
-					} else {
-						alert("Your positive message was shared on Facebook.");
-					}
+
+		// convert canvas to data URL
+		var dataURL = canvas.toDataURL("image/png");
+
+		// upload the photo to the user's album
+		FB.api(
+			"/me/photos",
+			"POST",
+			{
+				url: dataURL,
+				no_story: true,
+			},
+			function (response) {
+				if (response && !response.error) {
+					// create a link to the uploaded photo
+					var link = "https://www.facebook.com/photo.php?fbid=" + response.id;
+
+					// create the Facebook post with the link to the uploaded photo
+					FB.ui({
+						method: "feed",
+						link: link,
+						caption: "Check out my awesome image!",
+						description: "I created this using my awesome app.",
+					});
+				} else {
+					console.log(response.error);
+					alert("An error occurred while sharing your image on Facebook.");
 				}
-			);
-		});
+			}
+		);
 	};
 	cookieImage.src = "paper.png";
 }
