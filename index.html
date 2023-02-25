@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Éclats d'Amour</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
-		<link rel="stylesheet" type="text/css" href="style.css" />
-	</head>
-	<body>
-		<div id="fb-root"></div>
-		<div id="wrapper">
-			<h1>Éclats d'Amour<span>par Amy Bienvenu</span></h1>
-			<div id="form-wrapper">
-				<label for="receiverName">À qui envoyer l'éclat d'amour ?</label>
-				<div id="input-button-wrapper">
-					<input type="text" id="receiverName" value="Beauté"/>
-          <input type="hidden" id="senderName" value="La vie"/>
-					<button id="preview-button">Aperçu</button>
-				</div>
-				<script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_CA/sdk.js#xfbml=1&version=v16.0&appId=734144951415691&autoLogAppEvents=1" nonce="INA6wtTh"></script>
-				<div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"></div>
-			</div>
-			<div id="preview-wrapper">
-				<img id="preview-image" src="paper.png" alt="Aperçu" />
-				<button id="share-button">Partager</button>
-				<div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
-			</div>
-		</div>
-		<script>
 
-// JavaScript for the link with Facebook web app
+  <head>
+    <meta charset="UTF-8" />
+    <title>Éclats d'Amour</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <div id="fb-root"></div>
+    <div id="wrapper">
+      <h1>Éclats d'Amour<span>par Amy Bienvenu</span></h1>
+      <div id="form-wrapper">
+        <label for="receiverName">À qui envoyer l'éclat d'amour ?</label>
+        <div id="input-button-wrapper">
+          <input type="text" id="receiverName" value="Beauté" />
+          <input type="hidden" id="senderName" value="La vie" />
+          <button id="preview-button">Aperçu</button>
+        </div>
+        <script async defer crossorigin="anonymous"
+          src="https://connect.facebook.net/fr_CA/sdk.js#xfbml=1&version=v16.0&appId=734144951415691&autoLogAppEvents=1"
+          nonce="INA6wtTh"></script>
+        <div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout=""
+          data-auto-logout-link="true" data-use-continue-as="true"></div>
+      </div>
+      <div id="preview-wrapper">
+        <img id="preview-image" src="paper.png" alt="Aperçu" />
+        <button id="share-button">Partager</button>
+        <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
+      </div>
+    </div>
+    <script>
+
+      // JavaScript for the link with Facebook web app
       // Check login status
       function checkLoginState() {
         console.log("checkLoginState - FB.getLoginStatus");
@@ -39,10 +44,10 @@
               console.log("checkLoginState - FB.getLoginStatus - CONNECTED");
               // User is logged in and has granted permissions
               document.getElementById("share-button").style.display = "block";
-              FB.api('/me', 'GET', { fields: 'name' }, function(response) {
+              FB.api('/me', 'GET', { fields: 'name' }, function (response) {
                 document.getElementById("senderName").value = response.name;
-                console.log("FB.api with GET name : "+response.name);
-              });              
+                console.log("FB.api with GET name : " + response.name);
+              });
             } else if (response.status === "not_authorized") {
               console.log("checkLoginState - FB.getLoginStatus - NOT AUTHORIZED");
               // User is logged in but has not granted permissions
@@ -61,9 +66,9 @@
                 },
                 { scope: "public_profile" }
               );
-              FB.api('/me', 'GET', { fields: 'name' }, function(response) {
-                console.log("FB.api with GET name : "+response.name);
-              });              
+              FB.api('/me', 'GET', { fields: 'name' }, function (response) {
+                console.log("FB.api with GET name : " + response.name);
+              });
             } else {
               console.log("checkLoginState - FB.getLoginStatus - FAILED");
               // User is not logged in
@@ -76,68 +81,79 @@
             console.dir(error);
           }
         );
-      }   
-
-  function sharePicture() {
-    canvas = document.getElementById("preview-image");
-    console.log('canvas');
-    console.log(typeof canvas);
-    console.dir(canvas);
-    // convert canvas to data URL
-    var dataURL = canvas.toDataURL("image/png");
-
-    // upload the photo to the user's album
-    FB.api(
-      "/me/photos",
-      "POST",
-      {
-        url: dataURL,
-        no_story: true,
-      },
-      function (response) {
-        if (response && !response.error) {
-          // create a link to the uploaded photo
-          var link = "https://www.facebook.com/photo.php?fbid=" + response.id;
-
-          // create the Facebook post with the link to the uploaded photo
-          FB.ui({
-            method: "feed",
-            link: link,
-            caption: "Check out my awesome image!",
-            description: "I created this using my awesome app.",
-          });
-        } else {
-          console.log(response.error);
-          alert("An error occurred while sharing your image on Facebook.");
-        }
       }
-    );
-  }
 
-			window.fbAsyncInit = function () {
-				FB.init({
-					appId: "734144951415691",
-					xfbml: true,
-					version: "v16.0",
-				});
-				console.log("fbAsyncInit - FB.AppEvents.logPageView");
-				FB.AppEvents.logPageView();
-				// Check login status
-				checkLoginState();
-			};
+      function sharePicture() {
+        var previewImage = document.getElementById("preview-image");
 
-			(function (d, s, id) {
-				var js,
-					fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) {
-					return;
-				}
-				js = d.createElement(s);
-				js.id = id;
-				js.src = "https://connect.facebook.net/en_US/sdk.js";
-				fjs.parentNode.insertBefore(js, fjs);
-			})(document, "script", "facebook-jssdk");
-		</script>
-		<script src="app.js"></script>
-	</body>
+        // create a new canvas element
+        var canvas = document.createElement("canvas");
+
+        // set the canvas size to match the image size
+        canvas.width = previewImage.width;
+        canvas.height = previewImage.height;
+
+        // draw the image onto the canvas
+        var context = canvas.getContext("2d");
+        context.drawImage(previewImage, 0, 0);
+
+        // convert canvas to data URL
+        var dataURL = canvas.toDataURL("image/png");
+
+        // upload the photo to the user's album
+        FB.api(
+          "/me/photos",
+          "POST",
+          {
+            url: dataURL,
+            no_story: true,
+          },
+          function (response) {
+            if (response && !response.error) {
+              // create a link to the uploaded photo
+              var link = "https://www.facebook.com/photo.php?fbid=" + response.id;
+
+              // create the Facebook post with the link to the uploaded photo
+              FB.ui({
+                method: "feed",
+                link: link,
+                caption: "Check out my awesome image!",
+                description: "I created this using my awesome app.",
+              });
+            } else {
+              console.log(response.error);
+              alert("An error occurred while sharing your image on Facebook.");
+            }
+          }
+        );
+      }
+
+
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "734144951415691",
+          xfbml: true,
+          version: "v16.0",
+        });
+        console.log("fbAsyncInit - FB.AppEvents.logPageView");
+        FB.AppEvents.logPageView();
+        // Check login status
+        checkLoginState();
+      };
+
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+    </script>
+    <script src="app.js"></script>
+  </body>
+
 </html>
