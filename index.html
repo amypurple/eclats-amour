@@ -88,8 +88,6 @@
         FB.ui({
           method: 'share',
           href: previewImage.src,
-          quote: 'Check out my awesome image!',
-          hashtag: '#myapp'
         }, function (response) {
           if (response && !response.error) {
             // create a link to the uploaded photo
@@ -98,9 +96,8 @@
             // create the Facebook post with the link to the uploaded photo
             FB.ui({
               method: "feed",
+              app_id: 734144951415691,
               link: link,
-              caption: "Check out my awesome image!",
-              description: "I created this using my awesome app.",
             }, function (response) {
               console.log(response);
             });
