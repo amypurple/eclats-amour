@@ -71,6 +71,7 @@ function generatePositiveMessage(paper, messageIndex, receiverName, senderName) 
 		context.fillStyle = "black";
 		context.font = "bold 18px sans-serif";
 		context.textAlign = "center";
+		
 		context.strokeText(receiverNameText, cookieImage.width / 2, 25);
 		context.fillText(receiverNameText, cookieImage.width / 2, 25);
 
