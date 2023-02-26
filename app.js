@@ -85,7 +85,7 @@ function generatePositiveMessage(paper, messageIndex, receiverName, senderName) 
 		var shareButton = document.getElementById("share-button");
 		shareButton.value = window.location.href + "?index=" + messageIndex + "&receiver=" + encodeURIComponent(receiverName) + "&sender=" + encodeURIComponent(senderName);
 	};
-	cookieImage.src = "paper"+paper+".png";
+	cookieImage.src = "paper" + paper + ".png";
 }
 
 function getLines(ctx, text, maxWidth) {
@@ -130,7 +130,9 @@ function getPositiveMessage(index, name) {
 
 // Add event listener to the preview button
 document.getElementById("preview-button").addEventListener("click", function () {
-	paper = parseInt(secret.dataset.paper) || 0;	
+	console.log("preview button is clicked");
+	let secret = document.getElementById("secret-button");
+	paper = parseInt(secret.dataset.paper) || 0;
 	generatePositiveMessage(paper, -1, getReceiverName(), getSenderName());
 	// To hide the form wrapper and show the preview wrapper:
 	formWrapper.style.display = "none";
@@ -145,7 +147,7 @@ document.getElementById("secret-button").addEventListener("click", function () {
 	index = secret.dataset.index;
 	receiverName = secret.dataset.receiverName;
 	senderName = secret.dataset.senderName;
-	console.log(index,receiverName,senderName);
+	console.log(index, receiverName, senderName);
 	generatePositiveMessage(paper, index, receiverName, senderName);
 	// To hide the form wrapper and show the preview wrapper:
 	formWrapper.style.display = "none";
@@ -154,6 +156,7 @@ document.getElementById("secret-button").addEventListener("click", function () {
 
 // Add event listener to the preview button
 document.getElementById("retry-button").addEventListener("click", function () {
+	console.log("retry button is clicked");
 	// To hide the form wrapper and show the preview wrapper:
 	formWrapper.style.display = "flex";
 	previewWrapper.style.display = "none";
