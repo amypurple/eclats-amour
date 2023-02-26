@@ -130,7 +130,7 @@ function getPositiveMessage(index, name) {
 document.getElementById("preview-button").addEventListener("click", function () {
 	console.log("preview button is clicked");
 	let secret = document.getElementById("secret-button");
-	paper = parseInt(secret.dataset.paper) || 0;
+	let paper = parseInt(secret.dataset.paper) || 0;
 	generatePositiveMessage(paper, -1, getReceiverName(), getSenderName());
 	// To hide the form wrapper and show the preview wrapper:
 	formWrapper.style.display = "none";
@@ -141,7 +141,7 @@ document.getElementById("preview-button").addEventListener("click", function () 
 document.getElementById("secret-button").addEventListener("click", function () {
 	console.log("secret button is clicked");
 	let secret = document.getElementById("secret-button");
-	paper = 0;
+	let paper = 0;
 	if (secret.dataset.paper) paper = parseInt(secret.dataset.paper);
 	index = secret.dataset.index;
 	receiverName = secret.dataset.receiverName;
