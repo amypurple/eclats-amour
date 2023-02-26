@@ -168,9 +168,6 @@ input[type="text"] {
 
 	.paper-item {
 		min-width: 48px;
-		aspect-ratio: 1;
-		background: round;
-		border: 4px solid #f9d9da;
 	}
 
 	.selected {
