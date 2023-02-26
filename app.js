@@ -71,7 +71,7 @@ function generatePositiveMessage(paper, messageIndex, receiverName, senderName) 
 		context.fillStyle = "black";
 		context.font = "bold 18px sans-serif";
 		context.textAlign = "center";
-		
+
 		context.strokeText(receiverNameText, cookieImage.width / 2, 25);
 		context.fillText(receiverNameText, cookieImage.width / 2, 25);
 
@@ -86,7 +86,7 @@ function generatePositiveMessage(paper, messageIndex, receiverName, senderName) 
 
 		// Update the share button link
 		var shareButton = document.getElementById("share-button");
-		shareButton.value = window.location.href + "?index=" + messageIndex + "&receiver=" + encodeURIComponent(receiverName) + "&sender=" + encodeURIComponent(senderName);
+		shareButton.value = window.location.href + "?paper=" + paper + "&index=" + messageIndex + "&receiver=" + encodeURIComponent(receiverName) + "&sender=" + encodeURIComponent(senderName);
 	};
 	cookieImage.src = "paper" + paper + ".png";
 }
@@ -146,7 +146,8 @@ document.getElementById("preview-button").addEventListener("click", function () 
 document.getElementById("secret-button").addEventListener("click", function () {
 	console.log("secret button is clicked");
 	let secret = document.getElementById("secret-button");
-	paper = parseInt(secret.dataset.paper) || 0;
+	paper = 0;
+	if (secret.dataset.paper) paper = parseInt(secret.dataset.paper);
 	index = secret.dataset.index;
 	receiverName = secret.dataset.receiverName;
 	senderName = secret.dataset.senderName;
