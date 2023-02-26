@@ -166,7 +166,7 @@ input[type="text"] {
 		margin-top: 1em;
 	}
 
-	.paper {
+	.paper-item {
 		min-width: 48px;
 		aspect-ratio: 1;
 		background: round;

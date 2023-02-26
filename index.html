@@ -21,7 +21,7 @@
             // init form-paper-grid
             for (let i = 0; i <= 15; i++) {
               let div = document.createElement("div");
-              div.className = "paper";
+              div.className = "paper-item";
               div.value = i;
               div.style.backgroundImage = `url(paper${i}.png)`;
               div.onclick = function () {
@@ -166,7 +166,7 @@
           secret.dataset.senderName = senderName;
 
           document.addEventListener("load", () => {
-            document.querySelectorAll("paper")[paper].click();
+            document.querySelectorAll("paper-item")[paper].click();
             secret.click();
           }
           );
@@ -176,7 +176,7 @@
           document.getElementById("form-wrapper").style.display = "flex";
           document.getElementById("secret-button").dataset.paper = 0;
           document.addEventListener("load", () => {
-            document.querySelectorAll("paper")[0].addClass("selected");
+            document.querySelectorAll("paper-item")[0].addClass("selected");
           }
           );
         }
