@@ -64,17 +64,19 @@ function generatePositiveMessage(paper, messageIndex, receiverName, senderName) 
 
 		// Draw the receiver name on the canvas
 		var receiverNameText = "À: " + receiverName;
-		context.strokeStyle = "coral";
+		context.strokeStyle = "orchid";
 		context.lineWidth = 3;
 		context.lineJoin = "round";
 		context.miterLimit = 2;
 		context.fillStyle = "black";
 		context.font = "bold 18px sans-serif";
 		context.textAlign = "center";
+		context.strokeText(receiverNameText, cookieImage.width / 2, 25);
 		context.fillText(receiverNameText, cookieImage.width / 2, 25);
 
 		// Draw the sender name on the canvas
 		var senderNameText = "De: " + senderName;
+		context.strokeText(senderNameText, cookieImage.width / 2, cookieImage.height - 20);
 		context.fillText(senderNameText, cookieImage.width / 2, cookieImage.height - 20);
 
 		// Display the preview image on the web page
