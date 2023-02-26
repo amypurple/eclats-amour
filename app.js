@@ -151,7 +151,7 @@ document.getElementById("secret-button").addEventListener("click", function () {
 	index = secret.dataset.index;
 	receiverName = secret.dataset.receiverName;
 	senderName = secret.dataset.senderName;
-	console.log(index, receiverName, senderName);
+	console.log(paper, index, receiverName, senderName);
 	generatePositiveMessage(paper, index, receiverName, senderName);
 	// To hide the form wrapper and show the preview wrapper:
 	formWrapper.style.display = "none";
