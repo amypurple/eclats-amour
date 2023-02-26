@@ -22,11 +22,6 @@ function getReceiverName() {
 	return receiverName;
 }
 
-function getPaperName() {
-	paperName = document.getElementById("paperName").value;
-	return paperName;
-}
-
 function generatePositiveMessage(paper, messageIndex, receiverName, senderName) {
 	var cookieImage = new Image();
 	cookieImage.crossOrigin = "anonymous";
