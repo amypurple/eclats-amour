@@ -26,7 +26,7 @@
               div.style.backgroundImage = `url(paper${i}.png)`;
               div.onclick = function () {
                 // Highlight the selected paper
-                let papers = document.getElementsByClassName("paper");
+                let papers = document.getElementsByClassName("paper-item");
                 for (let j = 0; j < papers.length; j++) {
                   papers[j].classList.remove("selected");
                 }
@@ -166,7 +166,7 @@
           secret.dataset.senderName = senderName;
 
           document.addEventListener("load", () => {
-            document.querySelectorAll("paper-item")[paper].click();
+            document.querySelectorAll(".paper-item")[paper].click();
             secret.click();
           }
           );
@@ -176,7 +176,7 @@
           document.getElementById("form-wrapper").style.display = "flex";
           document.getElementById("secret-button").dataset.paper = 0;
           document.addEventListener("load", () => {
-            document.querySelectorAll("paper-item")[0].addClass("selected");
+            document.querySelectorAll(".paper-item")[0].addClass("selected");
           }
           );
         }
